@@ -2,19 +2,31 @@ import React from 'react';
 import TaskTable from './components/TaskTable';
 import ProjectTable from './components/ProjectTable';
 
+import styled from 'styled-components/macro';
+
 function App() {
   return (
     <div className="App">
       <header className="App-header"></header>
-      <div>
+      <__Container>
         <TaskTable />
         <ProjectTable />
-      </div>
+      </__Container>
     </div>
   );
 }
 
 export default App;
+
+const __Container = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  > div {
+    margin-top: 3rem ;
+  }
+`;
 
 
 // 2. The Tasks and Projects need to be done as a React SPA.

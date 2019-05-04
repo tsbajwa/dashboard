@@ -1,7 +1,6 @@
 import React from "react";
-import './table.scss';
+import styled from 'styled-components/macro';
 
-//TODO: Change to functional component
 const Table = ({ title, data }) => {
   const renderTableHeader = () => (
     <tr>
@@ -35,12 +34,43 @@ const Table = ({ title, data }) => {
   return (
     <div>
       <span>{title}</span>
-      <table className='table table-responsive table-hover '>
-        <thead>{renderTableHeader()}</thead>
-        <tbody>{renderTableBody()}</tbody>
-      </table>
+      <__Table>
+        <__Head>{renderTableHeader()}</__Head>
+        <__Body>{renderTableBody()}</__Body>
+      </__Table>
     </div>
   );
 };
 
 export default Table;
+
+const __Table = styled.table`
+  width: 100%;
+  max-width: 100%;
+  margin-bottom: 1rem;
+  display: block;
+  overflow-x: auto;
+  -ms-overflow-style: -ms-autohiding-scrollbar;
+
+  th, td {
+    padding: 0.75rem;
+    vertical-align: top;
+    border-top: 1px solid #eceeef;
+  }
+`;
+
+const __Head = styled.thead`
+  th {
+    vertical-align: bottom;
+    border-bottom: 2px solid #eceeef;
+    background-color: lightblue;
+  }
+`;
+
+const __Body = styled.tbody`
+  tr {
+    &:hover {
+      background-color: gray;
+    }
+  }
+`;
