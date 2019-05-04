@@ -1,17 +1,26 @@
 import React from 'react';
+import TaskTable from './components/TaskTable';
+import ProjectTable from './components/ProjectTable';
 
 function App() {
   return (
     <div className="App">
-      <header className="App-header">
-        <span>Test</span>
-      </header>
+      <header className="App-header"></header>
+      <div>
+        <TaskTable />
+        <ProjectTable />
+      </div>
     </div>
   );
 }
 
 export default App;
 
+
+// 2. The Tasks and Projects need to be done as a React SPA.
+// * Show a list of todays tasks in the tasks section.
+// * Show the projects assigned to the employee in the Project section. (at-least 4 rows ).
+// * Should be able to Add a new project into the list.
 
 
 //.App-header {
