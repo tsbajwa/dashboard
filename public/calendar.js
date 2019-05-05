@@ -9,14 +9,15 @@ class Calender {
     this.monthLabel = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
     this.dayLabel = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
     // Issue if month is
-    this.daysInPrevMonth = this.getTotalDays(this.currentYear, this.currentMonth === 0 ? 11 : this.currentMonth - 1);
-    this.daysInMonth = this.getTotalDays(this.currentYear, this.currentMonth);
+    this.daysInPrevMonth = this.getDaysInMonth(this.currentYear, this.currentMonth === 0 ? 11 : this.currentMonth - 1);
+    this.daysInMonth = this.getDaysInMonth(this.currentYear, this.currentMonth);
   }
 
   init() {
     this.setTitle();
     this.renderDayLabels();
     this.renderCalendar();
+    this.setEventListeners();
   }
 
   clearCalendar() {
@@ -43,23 +44,36 @@ class Calender {
     })
   }
 
-  getTotalDays(year, month) {
+  getDaysInMonth(year, month) {
     // 0 is last day of the previous month
     return new Date(year, month, 0).getDate();
   }
 
 
+  setEventListeners() {
+    const tableBody = document.getElementById("calendar-body");
+
+    tableBody.onclick = function toggleLeave(e) {
+      e.target.classList.toggle('leave');
+      console.log('item was clicked')
+      console.log(e.target);
+    }
+  }
+
+  showNotification() {
+    // create object
+    // destroy object
+
+  }
+
   createDayCell(text) {
     const dateCell = document.createElement("td");
     dateCell.innerHTML = text;
-    dateCell.onclick = function log() {
-      console.log('item was clicked')
-    }
     return dateCell;
   }
 
   renderCalendar(month, year) {
-    const calendar = document.getElementById("calendar");
+    const calendarBody = document.getElementById("calendar-body");
     let currentMonthDaysRendered = 0;
     let nextMonthDay = 1;
     let prevMonthDay = this.daysInPrevMonth - this.currentDay;
@@ -85,7 +99,7 @@ class Calender {
           }
         }
 
-        calendar.appendChild(row);
+        calendarBody.appendChild(row);
     }
   }
 }
