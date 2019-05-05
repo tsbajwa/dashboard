@@ -1,8 +1,8 @@
 ### General Information
 
 * Used create-react-app
-* Calendar located in public folder
-* Projects and Tasks SPA located in src folder
+* Calendar located in public folder and is on '/calendar' route
+* Projects and Tasks SPA located in src folder and is on '/' route
 ### How to use
 
 To use application:
