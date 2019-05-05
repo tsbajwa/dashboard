@@ -1,26 +1,30 @@
-import React from 'react';
-import styled from 'styled-components/macro';
-import { Link } from 'react-router-dom';
+import React from "react";
+import styled from "styled-components/macro";
+import { Link } from "react-router-dom";
 
 const Header = () => (
   <__Header>
-    <div>Client Dashboard</div>
-    <a href={process.env.PUBLIC_URL + '/calendar.html'}>Calender</a>
-    <Link to="/test">Test</Link>
+    <Link to="/">Client Dashboard</Link>
+    <a href={process.env.PUBLIC_URL + "/calendar.html"}>Calender</a>
   </__Header>
-)
+);
 
 const __Header = styled.header`
   display: flex;
   align-items: center;
   padding: 0 2rem;
-  background: blue;
-  height: 60px;
-  color: white;
+  background: #48e5c2;
+  height: 55px;
 
   a {
-    color: white;
-    }
+    color: #fff;
+    margin-right: 1rem;
+    text-transform: uppercase;
+    text-decoration: none;
+    font-weight: bold;
+    letter-spacing: 0.2px;
+    font-size: 18px;
+  }
 `;
 
 export default Header;

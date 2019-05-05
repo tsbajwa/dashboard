@@ -1,62 +1,19 @@
-import React from 'react';
-import Table from '../shared/Table';
+import React from "react";
+import Table from "../shared/Table";
+import styled from "styled-components/macro";
+import data from "../../data/task";
 
-const tableData = {
-  columns: ["Task",
-  "Subject",
-  "Customer",
-  "Priority",
-  "Status",
-  "Start Date",
-  "Due Date"],
-  rows: [{
-    "Task": 'fakasdta',
-    "Subject": 'fdfgdfgedata',
-    "Customer": 'fadata',
-    "Priority": 'fakedata',
-    "Status": 'adsdata',
-    "Start Date": 'fakesdata',
-    "Due Date": 'fakedata'
-  },
-{
-  "Task": 'fakasdta',
-  "Subject": 'fdfgdfgedata',
-  "Customer": 'fadata',
-  "Priority": 'fakedata',
-  "Status": 'adsdata',
-  "Start Date": 'fakesdata',
-  "Due Date": 'fakedata'
-},
-{
-  "Task": 'fakasdta',
-  "Subject": 'fdfgdfgedata',
-  "Customer": 'fadata',
-  "Priority": 'fakedata',
-  "Status": 'adsdata',
-  "Start Date": 'fakesdata',
-  "Due Date": 'fakedata'
-},
-{
-  "Task": 'fakasdta',
-  "Subject": 'fdfgdfgedata',
-  "Customer": 'fadata',
-  "Priority": 'fakedata',
-  "Status": 'adsdata',
-  "Start Date": 'fakesdata',
-  "Due Date": 'fakedata'
-}]
-}
-
-class TaskTable extends React.Component {
-  render() {
-    return (
-      <Table
-        data={ tableData }
-        title="Todays Tasks"
-      />
-    )
-  }
-}
-
+const TaskTable = () => {
+  return (
+    <__Container>
+      <Table data={data} title="Todays Tasks" />
+    </__Container>
+  );
+};
 
 export default TaskTable;
+
+const __Container = styled.div`
+  width: 100%;
+  border: 1px solid gray;
+`;

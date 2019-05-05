@@ -1,0 +1,36 @@
+{
+  "columns":
+  [
+    "Name",
+    "Time Period",
+    "Customer",
+    "Skills"
+  ],
+  "rows":
+  [
+    {
+      "Name": "John Doe",
+      "Time Period": "Two weeks",
+      "Customer": "Company Pty ltd",
+      "Skills": "Front end etc"
+    },
+    {
+      "Name": "John Doe",
+      "Time Period": "Two weeks",
+      "Customer": "Company Pty ltd",
+      "Skills": "Front end etc"
+    },
+    {
+      "Name": "John Doe",
+      "Time Period": "Two weeks",
+      "Customer": "Company Pty ltd",
+      "Skills": "Front end etc"
+    },
+    {
+      "Name": "John Doe",
+      "Time Period": "Two weeks",
+      "Customer": "Company Pty ltd",
+      "Skills": "Front end etc"
+    }
+  ]
+}

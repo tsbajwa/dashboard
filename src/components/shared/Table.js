@@ -1,5 +1,5 @@
 import React from "react";
-import styled from 'styled-components/macro';
+import styled from "styled-components/macro";
 
 const Table = ({ title, data }) => {
   const renderTableHeader = () => (
@@ -45,20 +45,24 @@ const Table = ({ title, data }) => {
 export default Table;
 
 const __Title = styled.div`
-  background: gray;
-  padding: 0.5rem 1rem;
+  background: #d9dcd6;
+  padding: 1rem;
   margin-bottom: 2rem;
+  font-weight: bold;
+  letter-spacing: 1px;
+  font-size: 18px;
 `;
 
 const __Table = styled.table`
   width: 100%;
   max-width: 100%;
   margin-bottom: 1rem;
-  display: block;
+  display: table;
   overflow-x: auto;
   -ms-overflow-style: -ms-autohiding-scrollbar;
 
-  th, td {
+  th,
+  td {
     padding: 0.75rem;
     vertical-align: top;
     border-top: 1px solid #eceeef;
@@ -69,14 +73,15 @@ const __Head = styled.thead`
   th {
     vertical-align: bottom;
     border-bottom: 2px solid #eceeef;
-    background-color: lightblue;
+    background-color: #3a7ca5;
+    color: #fff;
   }
 `;
 
 const __Body = styled.tbody`
   tr {
     &:hover {
-      background-color: gray;
+      background-color: #81c3d7;
     }
   }
 `;

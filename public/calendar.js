@@ -1,8 +1,7 @@
 class Calender {
-  constructor(date, calendar) {
+  constructor(date) {
     this.currentMonth = date.getMonth();
     this.currentYear = date.getFullYear();
-    this.calendar = calendar;
     this.monthLabel = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
     this.dayLabel = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
     this.prevMonth = this.prevMonth.bind(this);
@@ -16,10 +15,6 @@ class Calender {
     this.renderDayLabels();
     this.renderCalendarBody();
     this.setEventListeners();
-  }
-
-  clearCalendar() {
-    this.calendar.innerHTML = '';
   }
 
   toggleLeave(e) {
@@ -122,19 +117,15 @@ class Calender {
       const row = document.createElement("tr");
 
         for (let j = 0; j < 7; j++) {
-          // Render previous months days
           if (j < currentDay && currentRow === 0) {
             const dateCell = this.createDayCell(prevMonthDay);
             row.appendChild(dateCell);
             prevMonthDay++;
-
-            // Render current month days
           } else if (daysInMonth > currentMonthDaysRendered) {
             const dateCell = this.createDayCell(currentMonthDaysRendered + 1);
+            dateCell.className = 'current'
             row.appendChild(dateCell);
             currentMonthDaysRendered++;
-
-            //Render next months days
           } else {
            const dateCell = this.createDayCell(nextMonthDay);
             row.appendChild(dateCell);
@@ -147,5 +138,5 @@ class Calender {
   }
 }
 
-const leaveCalender = new Calender(new Date(), document.getElementById("calendar"))
+const leaveCalender = new Calender(new Date());
 leaveCalender.init();

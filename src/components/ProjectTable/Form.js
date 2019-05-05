@@ -1,5 +1,6 @@
 import React from "react";
-import styled from 'styled-components/macro';
+import Button from "../shared/Button";
+import styled from "styled-components/macro";
 class Form extends React.Component {
   state = {};
 
@@ -25,8 +26,7 @@ class Form extends React.Component {
     });
   };
 
-  handleSubmit = event => {
-    event.preventDefault();
+  handleSubmit = () => {
     this.props.onSubmit(this.state);
     this.setInitialFormState();
   };
@@ -35,8 +35,7 @@ class Form extends React.Component {
     return (
       <__Form onSubmit={this.handleSubmit}>
         <__Inputs>
-        {
-          this.props.formFields.map(field => (
+          {this.props.formFields.map(field => (
             <span key={field}>
               <label>{field}</label>
               <input
@@ -44,15 +43,16 @@ class Form extends React.Component {
                 name={field}
                 value={this.state[field] || ""}
                 onChange={this.handleInputChange}
-                required
               />
             </span>
-          ))
-        }
+          ))}
         </__Inputs>
-        <__Submit>
-          <button type="submit" value="submit">Add Project</button>
-        </__Submit>
+        <__BtnContainer>
+          <Button cancel onClick={this.props.onCancel}>
+            Cancel
+          </Button>
+          <Button onClick={this.handleSubmit}>Add Project</Button>
+        </__BtnContainer>
       </__Form>
     );
   }
@@ -60,25 +60,14 @@ class Form extends React.Component {
 
 export default Form;
 
-
 const __Form = styled.form`
-  max-width: 960px;
-  margin-bottom: 3rem;
+  width: 100%;
+  margin-top: 2rem;
 `;
 
-const __Submit = styled.div`
+const __BtnContainer = styled.div`
   display: flex;
   justify-content: center;
-
-  > button {
-    padding: 0.5rem 1rem;
-    background: lightblue;
-    color: white;
-
-    &:hover {
-      cursor: pointer;
-    }
-  }
 `;
 
 const __Inputs = styled.div`
@@ -89,9 +78,9 @@ const __Inputs = styled.div`
     display: flex;
     flex-direction: column;
     align-items: left;
-    width: 33%;
+    flex: 1 1 20%;
     margin-bottom: 1rem;
-    margin-right: 0.2rem;
+    margin-right: 0.5rem;
   }
 
   input {
