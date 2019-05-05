@@ -1,32 +1,21 @@
 import React from 'react';
-import TaskTable from './components/TaskTable';
-import ProjectTable from './components/ProjectTable';
-import Header from './components/Header';
-import styled from 'styled-components/macro';
+import DashBoard from './pages/DashBoard';
+import { Route, Switch } from 'react-router-dom'
 
+const test = () => (
+  <div>test</div>
+)
 function App() {
   return (
-    <div className="App">
-      <Header />
-      <__Container>
-        <TaskTable />
-        <ProjectTable />
-      </__Container>
-    </div>
+    <Switch>
+      <Route exact path='/' component={DashBoard} />
+      <Route path='/test' component={test} />
+    </Switch>
   );
 }
 
 export default App;
 
-const __Container = styled.div`
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-
-  > div {
-    margin-top: 3rem ;
-  }
-`;
 
 
 // 2. The Tasks and Projects need to be done as a React SPA.
