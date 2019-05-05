@@ -1,29 +1,27 @@
-<!--
-    Linking to the page
-  <a href={process.env.PUBLIC_URL + '/calender.html'}>Calender</a>
--->
-
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <link rel="stylesheet" href="calendar.css">
-    <title>Calender</title>
-  </head>
-  <body>
-    <div>
-      <div class="calendar-header">
-        <span id="calendar-title"></span>
-        <div id="calendar-buttons"></div>
-      </div>
-      <table id="calendar">
-        <thead id="calendar-head">
-        </thead>
-        <tbody id="calendar-body"></tbody>
-      </table>
-      <div id="toast"></div>
+
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <link rel="stylesheet" href="calendar.css">
+  <title>Calender</title>
+</head>
+
+<body>
+  <div>
+    <div class="calendar-header">
+      <span id="calendar-title"></span>
+      <div id="calendar-buttons"></div>
     </div>
-    <script src="calendar.js"></script>
-  </body>
+    <table id="calendar">
+      <thead id="calendar-head">
+      </thead>
+      <tbody id="calendar-body"></tbody>
+    </table>
+    <div id="toast"></div>
+  </div>
+  <script src="calendar.js"></script>
+</body>
+
 </html>
