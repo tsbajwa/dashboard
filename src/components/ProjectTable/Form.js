@@ -33,7 +33,7 @@ class Form extends React.Component {
 
   render() {
     return (
-      <__Form onSubmit={this.handleSubmit}>
+      <__Form>
         <__Inputs>
           {this.props.formFields.map(field => (
             <span key={field}>
@@ -48,9 +48,7 @@ class Form extends React.Component {
           ))}
         </__Inputs>
         <__BtnContainer>
-          <Button cancel onClick={this.props.onCancel}>
-            Cancel
-          </Button>
+          <Button cancel onClick={this.props.onCancel}>Cancel</Button>
           <Button onClick={this.handleSubmit}>Add Project</Button>
         </__BtnContainer>
       </__Form>
