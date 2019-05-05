@@ -142,7 +142,7 @@ class Calender {
     // Reset Calender Body
     calendarBody.innerHTML = "";
 
-    for (let currentRow = 0; currentRow < 5; currentRow++) {
+    for (let currentRow = 0; currentRow < 6; currentRow++) {
       const row = document.createElement("tr");
 
       for (let j = 0; j < 7; j++) {
