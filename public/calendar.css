@@ -1,0 +1,76 @@
+body {
+  display: flex;
+  justify-content: center;
+  max-width: 960px;
+}
+
+
+.calendar-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 2rem;
+  margin-bottom: 0.3rem;
+}
+
+table {
+  border-spacing: 0px;
+}
+
+td, th {
+  border: 1px solid lightgray;
+}
+
+th {
+  padding: 0.4rem 1rem;
+}
+
+td {
+  padding: 0.3rem 0.3rem 1.8rem 1rem;
+}
+
+.leave {
+  background: lightblue
+}
+
+tbody {
+  text-align: right;
+  vertical-align: top;
+  font-size: 12px;
+}
+
+#calendar-title {
+  font-size: 16px;
+  font-weight: bold;
+}
+
+#calendar-buttons {
+  margin-bottom: 0.2rem;
+}
+
+#calendar-buttons > span {
+  box-sizing: border-box;
+  margin-right: 0.5rem;
+  background: green;
+  padding: 0.3rem 0.5rem;
+  color: white;
+  border-radius: 2px;
+}
+
+#calendar-buttons > span:hover {
+  cursor: pointer;
+}
+
+#toast {
+  display: none;
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  border: 1px solid gray;
+  padding: 1rem;
+  background: lightgray;
+}
+
+#toast.show {
+  display: block;
+}

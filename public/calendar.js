@@ -2,21 +2,22 @@
 
 class Calender {
   constructor(date, calendar) {
-    this.currentDay = date.getDay();
     this.currentMonth = date.getMonth();
     this.currentYear = date.getFullYear();
     this.calendar = calendar;
     this.monthLabel = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
     this.dayLabel = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
     // Issue if month is
-    this.daysInPrevMonth = this.getDaysInMonth(this.currentYear, this.currentMonth === 0 ? 11 : this.currentMonth - 1);
-    this.daysInMonth = this.getDaysInMonth(this.currentYear, this.currentMonth);
+    this.prevMonth = this.prevMonth.bind(this);
+    this.nextMonth = this.nextMonth.bind(this);
+    this.toggleLeave = this.toggleLeave.bind(this);
   }
 
   init() {
     this.setTitle();
+    this.renderCalendarButtons();
     this.renderDayLabels();
-    this.renderCalendar();
+    this.renderCalendarBody();
     this.setEventListeners();
   }
 
@@ -24,13 +25,14 @@ class Calender {
     this.calendar.innerHTML = '';
   }
 
-  toggleLeave() {
-
+  toggleLeave(e) {
+    e.target.classList.toggle('leave');
+    this.showNotification(e.target);
   }
 
 
   setTitle() {
-    const title = document.getElementById("monthYearCurrent");
+    const title = document.getElementById("calendar-title");
     title.innerHTML = this.monthLabel[this.currentMonth] + " " + this.currentYear;
   }
 
@@ -46,24 +48,21 @@ class Calender {
 
   getDaysInMonth(year, month) {
     // 0 is last day of the previous month
-    return new Date(year, month, 0).getDate();
+    return new Date(year, month + 1, 0).getDate();
   }
 
 
   setEventListeners() {
     const tableBody = document.getElementById("calendar-body");
-
-    tableBody.onclick = function toggleLeave(e) {
-      e.target.classList.toggle('leave');
-      console.log('item was clicked')
-      console.log(e.target);
-    }
+    tableBody.onclick = this.toggleLeave;
   }
 
-  showNotification() {
-    // create object
-    // destroy object
-
+  showNotification(element) {
+    const toast = document.getElementById("toast");
+    const leaveActive = element.classList.contains('leave') ? true : false;
+    toast.className = "show";
+    toast.innerHTML = leaveActive ? 'Applied for leave' : 'Removed scheduled leave';
+    setTimeout(function(){ toast.className = toast.className.replace("show", ""); }, 3000);
   }
 
   createDayCell(text) {
@@ -72,26 +71,76 @@ class Calender {
     return dateCell;
   }
 
-  renderCalendar(month, year) {
+
+  updateCalendar() {
+    this.setTitle();
+    this.renderCalendarBody();
+    this.setEventListeners();
+  }
+
+  prevMonth() {
+    if (this.currentMonth === 0) {
+      this.currentMonth = 11;
+      this.currentYear -= 1;
+    } else {
+      this.currentMonth -= 1;
+    }
+    this.updateCalendar()
+  }
+
+  nextMonth() {
+    if (this.currentMonth === 11) {
+      this.currentMonth = 0;
+      this.currentYear += 1;
+    } else {
+      this.currentMonth += 1;
+    }
+    this.updateCalendar()
+  }
+
+  renderCalendarButtons() {
+    const button = document.getElementById("calendar-buttons");
+
+    const spanNode = document.createElement('span');
+    const prevButton = button.appendChild(spanNode)
+    prevButton.innerHTML = 'Previous';
+    prevButton.onclick = this.prevMonth;
+
+    const spanNode2 = document.createElement('span');
+    const nextButton = button.appendChild(spanNode2)
+    nextButton.innerHTML = 'Next';
+    nextButton.onclick = this.nextMonth;
+  }
+
+  renderCalendarBody() {
     const calendarBody = document.getElementById("calendar-body");
+    const daysInPrevMonth = this.getDaysInMonth(this.currentYear, this.currentMonth === 0 ? 11 : this.currentMonth - 1);
+    const daysInMonth = this.getDaysInMonth(this.currentYear, this.currentMonth);
+    const currentDay = new Date(this.currentYear, this.currentMonth, 1).getDay();
     let currentMonthDaysRendered = 0;
     let nextMonthDay = 1;
-    let prevMonthDay = this.daysInPrevMonth - this.currentDay;
+    let prevMonthDay = daysInPrevMonth - currentDay + 1;
+
+    // Reset Calender Body
+    calendarBody.innerHTML = '';
 
     for (let currentRow = 0; currentRow < 5; currentRow++) {
       const row = document.createElement("tr");
-      //Previous months days being rendered. Will only exist on first line
+
         for (let j = 0; j < 7; j++) {
-          if (j < this.currentDay && currentRow === 0) {
+          // Render previous months days
+          if (j < currentDay && currentRow === 0) {
             const dateCell = this.createDayCell(prevMonthDay);
             row.appendChild(dateCell);
             prevMonthDay++;
-            // Current month dates being rendered;
-          } else if (this.daysInMonth > currentMonthDaysRendered) {
+
+            // Render current month days
+          } else if (daysInMonth > currentMonthDaysRendered) {
             const dateCell = this.createDayCell(currentMonthDaysRendered + 1);
             row.appendChild(dateCell);
             currentMonthDaysRendered++;
-            //Next months dates being rendered
+
+            //Render next months days
           } else {
            const dateCell = this.createDayCell(nextMonthDay);
             row.appendChild(dateCell);
@@ -106,5 +155,3 @@ class Calender {
 
 const leaveCalender = new Calender(new Date(), document.getElementById("calendar"))
 leaveCalender.init();
-
-// TODO: Make calendar more reusable iwth the get elements by id business
