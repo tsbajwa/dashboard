@@ -56,12 +56,11 @@ tbody {
 }
 
 #calendar-buttons > span {
-  font-size: 14px;
-  box-sizing: border-box;
-  margin-right: 0.5rem;
-  background: green;
-  padding: 0.3rem 0.5rem;
+  padding: 0.5rem 1rem;
+  background:#2F6690;
   color: white;
+  margin: 0 0.5rem;
+  font-size: 14px;
   border-radius: 2px;
 }
 

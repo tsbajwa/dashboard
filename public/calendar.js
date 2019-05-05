@@ -2,7 +2,20 @@ class Calender {
   constructor(date) {
     this.currentMonth = date.getMonth();
     this.currentYear = date.getFullYear();
-    this.monthLabel = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
+    this.monthLabel = [
+      "Jan",
+      "Feb",
+      "Mar",
+      "Apr",
+      "May",
+      "Jun",
+      "Jul",
+      "Aug",
+      "Sep",
+      "Oct",
+      "Nov",
+      "Dec"
+    ];
     this.dayLabel = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
     this.prevMonth = this.prevMonth.bind(this);
     this.nextMonth = this.nextMonth.bind(this);
@@ -18,13 +31,14 @@ class Calender {
   }
 
   toggleLeave(e) {
-    e.target.classList.toggle('leave');
+    e.target.classList.toggle("leave");
     this.showNotification(e.target);
   }
 
   setTitle() {
     const title = document.getElementById("calendar-title");
-    title.innerHTML = this.monthLabel[this.currentMonth] + " " + this.currentYear;
+    title.innerHTML =
+      this.monthLabel[this.currentMonth] + " " + this.currentYear;
   }
 
   renderDayLabels() {
@@ -34,7 +48,7 @@ class Calender {
       let dayLabel = document.createElement("th");
       dayLabel.innerHTML = label;
       calendarHead.append(dayLabel);
-    })
+    });
   }
 
   getDaysInMonth(year, month) {
@@ -49,10 +63,14 @@ class Calender {
 
   showNotification(element) {
     const toast = document.getElementById("toast");
-    const leaveActive = element.classList.contains('leave') ? true : false;
+    const leaveActive = element.classList.contains("leave") ? true : false;
     toast.className = "show";
-    toast.innerHTML = leaveActive ? 'Applied for leave' : 'Removed scheduled leave';
-    setTimeout(function(){ toast.className = toast.className.replace("show", ""); }, 3000);
+    toast.innerHTML = leaveActive
+      ? "Applied for leave"
+      : "Removed scheduled leave";
+    setTimeout(function() {
+      toast.className = toast.className.replace("show", "");
+    }, 3000);
   }
 
   createDayCell(text) {
@@ -74,7 +92,7 @@ class Calender {
     } else {
       this.currentMonth -= 1;
     }
-    this.updateCalendar()
+    this.updateCalendar();
   }
 
   nextMonth() {
@@ -84,56 +102,67 @@ class Calender {
     } else {
       this.currentMonth += 1;
     }
-    this.updateCalendar()
+    this.updateCalendar();
   }
 
   renderCalendarButtons() {
     const button = document.getElementById("calendar-buttons");
 
-    const spanNode = document.createElement('span');
-    const prevButton = button.appendChild(spanNode)
-    prevButton.innerHTML = 'Previous';
+    const spanNode = document.createElement("span");
+    const prevButton = button.appendChild(spanNode);
+    prevButton.innerHTML = "Previous";
     prevButton.onclick = this.prevMonth;
 
-    const spanNode2 = document.createElement('span');
-    const nextButton = button.appendChild(spanNode2)
-    nextButton.innerHTML = 'Next';
+    const spanNode2 = document.createElement("span");
+    const nextButton = button.appendChild(spanNode2);
+    nextButton.innerHTML = "Next";
     nextButton.onclick = this.nextMonth;
   }
 
   renderCalendarBody() {
     const calendarBody = document.getElementById("calendar-body");
-    const daysInPrevMonth = this.getDaysInMonth(this.currentYear, this.currentMonth === 0 ? 11 : this.currentMonth - 1);
-    const daysInMonth = this.getDaysInMonth(this.currentYear, this.currentMonth);
-    const currentDay = new Date(this.currentYear, this.currentMonth, 1).getDay();
+    const daysInPrevMonth = this.getDaysInMonth(
+      this.currentYear,
+      this.currentMonth === 0 ? 11 : this.currentMonth - 1
+    );
+    const daysInMonth = this.getDaysInMonth(
+      this.currentYear,
+      this.currentMonth
+    );
+    const currentDay = new Date(
+      this.currentYear,
+      this.currentMonth,
+      1
+    ).getDay();
+
     let currentMonthDaysRendered = 0;
     let nextMonthDay = 1;
     let prevMonthDay = daysInPrevMonth - currentDay + 1;
 
     // Reset Calender Body
-    calendarBody.innerHTML = '';
+    calendarBody.innerHTML = "";
 
     for (let currentRow = 0; currentRow < 5; currentRow++) {
       const row = document.createElement("tr");
 
-        for (let j = 0; j < 7; j++) {
-          if (j < currentDay && currentRow === 0) {
-            const dateCell = this.createDayCell(prevMonthDay);
-            row.appendChild(dateCell);
-            prevMonthDay++;
-          } else if (daysInMonth > currentMonthDaysRendered) {
-            const dateCell = this.createDayCell(currentMonthDaysRendered + 1);
-            dateCell.className = 'current'
-            row.appendChild(dateCell);
-            currentMonthDaysRendered++;
-          } else {
-           const dateCell = this.createDayCell(nextMonthDay);
-            row.appendChild(dateCell);
-            nextMonthDay++;
-          }
+      for (let j = 0; j < 7; j++) {
+        if (j < currentDay && currentRow === 0) {
+          const dateCell = this.createDayCell(prevMonthDay);
+          row.appendChild(dateCell);
+          prevMonthDay++;
+        } else if (daysInMonth > currentMonthDaysRendered) {
+          const dateCell = this.createDayCell(currentMonthDaysRendered + 1);
+          dateCell.className = "current";
+          row.appendChild(dateCell);
+          currentMonthDaysRendered++;
+        } else {
+          const dateCell = this.createDayCell(nextMonthDay);
+          row.appendChild(dateCell);
+          nextMonthDay++;
         }
+      }
 
-        calendarBody.appendChild(row);
+      calendarBody.appendChild(row);
     }
   }
 }

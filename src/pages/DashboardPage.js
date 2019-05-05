@@ -1,8 +1,8 @@
-import React from "react";
-import TaskTable from "../components/TaskTable";
-import ProjectTable from "../components/ProjectTable";
-import Header from "../components/Header";
-import styled from "styled-components/macro";
+import React from 'react';
+import TaskTable from '../components/TaskTable';
+import ProjectTable from '../components/ProjectTable';
+import Header from '../components/Header';
+import styled from 'styled-components/macro';
 
 const ProjectPage = () => {
   return (
@@ -13,8 +13,8 @@ const ProjectPage = () => {
         <ProjectTable />
       </__Container>
     </>
-  );
-};
+  )
+}
 
 export default ProjectPage;
 
@@ -26,6 +26,6 @@ const __Container = styled.div`
   margin: 0 auto;
 
   > div {
-    margin-top: 3rem;
+    margin-top: 3rem ;
   }
 `;
