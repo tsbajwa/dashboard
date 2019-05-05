@@ -1,13 +1,13 @@
 import React from 'react';
 import TaskTable from './components/TaskTable';
 import ProjectTable from './components/ProjectTable';
-
+import Header from './components/Header';
 import styled from 'styled-components/macro';
 
 function App() {
   return (
     <div className="App">
-      <header className="App-header"></header>
+      <Header />
       <__Container>
         <TaskTable />
         <ProjectTable />
