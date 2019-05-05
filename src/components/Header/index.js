@@ -13,7 +13,7 @@ const __Header = styled.header`
   display: flex;
   align-items: center;
   padding: 0 2rem;
-  background: #236153;
+  background: #168c71;
   height: 55px;
 
   a {
