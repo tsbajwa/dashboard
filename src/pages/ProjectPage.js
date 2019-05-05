@@ -4,7 +4,7 @@ import ProjectTable from '../components/ProjectTable';
 import Header from '../components/Header';
 import styled from 'styled-components/macro';
 
-const DashBoard = () => {
+const ProjectPage = () => {
   return (
     <div className="App">
       <Header />
@@ -17,7 +17,7 @@ const DashBoard = () => {
 }
 
 
-export default DashBoard;
+export default ProjectPage;
 
 
 const __Container = styled.div`

@@ -33,7 +33,7 @@ const Table = ({ title, data }) => {
 
   return (
     <div>
-      <span>{title}</span>
+      <__Title>{title}</__Title>
       <__Table>
         <__Head>{renderTableHeader()}</__Head>
         <__Body>{renderTableBody()}</__Body>
@@ -43,6 +43,12 @@ const Table = ({ title, data }) => {
 };
 
 export default Table;
+
+const __Title = styled.div`
+  background: gray;
+  padding: 0.5rem 1rem;
+  margin-bottom: 2rem;
+`;
 
 const __Table = styled.table`
   width: 100%;

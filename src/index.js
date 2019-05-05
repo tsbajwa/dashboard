@@ -1,14 +1,14 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import App from './App';
 import GlobalStyle from './theme/globalStyle';
 import { BrowserRouter } from 'react-router-dom';
+import App from './App';
 
-const AppWithStyle = () => (
+const AppBrowserStyle = () => (
   <BrowserRouter>
-  <GlobalStyle />
-  <App />
+    <GlobalStyle />
+    <App />
   </BrowserRouter>
 )
 
-ReactDOM.render( <AppWithStyle/>, document.getElementById('root'));
+ReactDOM.render( <AppBrowserStyle/>, document.getElementById('root'));

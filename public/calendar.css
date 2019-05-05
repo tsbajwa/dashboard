@@ -2,6 +2,7 @@ body {
   display: flex;
   justify-content: center;
   max-width: 960px;
+  margin: 0 auto;
 }
 
 
@@ -29,7 +30,7 @@ td {
   padding: 0.3rem 0.3rem 1.8rem 1rem;
 }
 
-.leave {
+td.leave {
   background: lightblue
 }
 
@@ -49,6 +50,7 @@ tbody {
 }
 
 #calendar-buttons > span {
+  font-size: 14px;
   box-sizing: border-box;
   margin-right: 0.5rem;
   background: green;
@@ -57,7 +59,7 @@ tbody {
   border-radius: 2px;
 }
 
-#calendar-buttons > span:hover {
+#calendar-buttons > span:hover, td:hover  {
   cursor: pointer;
 }
 

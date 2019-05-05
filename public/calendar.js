@@ -1,5 +1,3 @@
-// Days go from 0-6, with Sunday being 0;
-
 class Calender {
   constructor(date, calendar) {
     this.currentMonth = date.getMonth();
@@ -7,7 +5,6 @@ class Calender {
     this.calendar = calendar;
     this.monthLabel = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
     this.dayLabel = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
-    // Issue if month is
     this.prevMonth = this.prevMonth.bind(this);
     this.nextMonth = this.nextMonth.bind(this);
     this.toggleLeave = this.toggleLeave.bind(this);
@@ -30,7 +27,6 @@ class Calender {
     this.showNotification(e.target);
   }
 
-
   setTitle() {
     const title = document.getElementById("calendar-title");
     title.innerHTML = this.monthLabel[this.currentMonth] + " " + this.currentYear;
@@ -51,7 +47,6 @@ class Calender {
     return new Date(year, month + 1, 0).getDate();
   }
 
-
   setEventListeners() {
     const tableBody = document.getElementById("calendar-body");
     tableBody.onclick = this.toggleLeave;
@@ -70,7 +65,6 @@ class Calender {
     dateCell.innerHTML = text;
     return dateCell;
   }
-
 
   updateCalendar() {
     this.setTitle();

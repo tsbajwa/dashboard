@@ -1,7 +1,6 @@
 import React from 'react';
 import Table from '../shared/Table';
 
-
 const tableData = {
   columns: ["Task",
   "Subject",
